@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="avatar_size_width">48dp</dimen>
+    <dimen name="avatar_size_height">48dp</dimen>
+    <dimen name="paddingStart">15dp</dimen>
+    <dimen name="indentForNumbers">3dp</dimen>
+    <dimen name="betweenSymbols">16dp</dimen>
+    <dimen name="LargeIndent">230dp</dimen>
+    <dimen name="SymbolSize">20dp</dimen>
+</resources>
