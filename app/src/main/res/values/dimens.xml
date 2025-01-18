@@ -7,4 +7,5 @@
     <dimen name="betweenSymbols">16dp</dimen>
     <dimen name="LargeIndent">230dp</dimen>
     <dimen name="SymbolSize">20dp</dimen>
+    <dimen name="NormalSpace">8dp</dimen>
 </resources>
