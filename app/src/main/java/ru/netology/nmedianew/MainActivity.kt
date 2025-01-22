@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             likeByMe = false,
         )
 
-        //val avatar : ImageView = findViewById(R.id.avatar)
+        //val avatar : ImageView = findViewById(R.id.avatar) - another variants
         //avatar.setImageResource(R.drawable.netology)
         binding.author.text = post.author
         binding.textOfThePublication.text = post.content
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.baseline_favorite_24
             }
         )
-        if (post.likeByMe) post.likes-- else post.likes++
+        if(post.likeByMe) post.likes-- else post.likes++
             binding.volumeOfLikes.text = post.likes.toString()
         }
 
