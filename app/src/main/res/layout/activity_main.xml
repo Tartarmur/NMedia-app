@@ -99,8 +99,8 @@
 
     <TextView
         android:id="@+id/volume_of_likes"
-        android:layout_width="@dimen/SymbolSize"
-        android:layout_height="@dimen/SymbolSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/volume_of_likes"
         app:layout_constraintStart_toEndOf="@id/likes"
         app:layout_constraintTop_toBottomOf="@id/lower_Barrier"
@@ -109,7 +109,7 @@
         />
 
     <ImageView
-        android:id="@+id/share"
+        android:id="@+id/shares"
         android:layout_width="@dimen/SymbolSize"
         android:layout_height="@dimen/SymbolSize"
         android:src="@drawable/baseline_share_24"
@@ -122,10 +122,10 @@
 
     <TextView
         android:id="@+id/volume_of_share"
-        android:layout_width="@dimen/SymbolSize"
-        android:layout_height="@dimen/SymbolSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/Volume_of_share"
-        app:layout_constraintStart_toEndOf="@id/share"
+        app:layout_constraintStart_toEndOf="@id/shares"
         app:layout_constraintTop_toBottomOf="@id/lower_Barrier"
         android:layout_marginTop="@dimen/paddingStart"
         android:layout_marginStart="@dimen/NormalSpace"
@@ -133,12 +133,13 @@
 
     <TextView
         android:id="@+id/volume_of_views"
-        android:layout_width="@dimen/SymbolSize"
-        android:layout_height="@dimen/SymbolSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/volume_of_views"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lower_Barrier"
         android:layout_marginTop="@dimen/paddingStart"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="@dimen/indentForNumbers"
         />
 
