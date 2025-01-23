@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity() {
 
         val post = Post(
             id = 1,
-            likes = 111324,
-            shares = 7735,
-            views = 1222301,
+            likes = 115,
+            shares = 5098,
+            views = 1299998,
             author = "Нетология. Университет интернет-профессий будущего",
             date_and_time_of_publication = "21 мая в 18:36",
             content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
@@ -33,27 +33,21 @@ class MainActivity : AppCompatActivity() {
         binding.author.text = post.author
         binding.textOfThePublication.text = post.content
         binding.dateAndTimeOfPublication.text = post.date_and_time_of_publication
-        binding.volumeOfLikes.text = post.likes.toString()
-        binding.volumeOfShare.text = post.shares.toString()
-        binding.volumeOfViews.text = post.views.toString()
-        writeEndingLikes(binding, post)
-        writeEndingShares(binding, post)
-        writeEndingViews(binding, post)
+        binding.volumeOfLikes.text = formatCount(post.likes)
+        binding.volumeOfShare.text = formatCount(post.shares)
+        binding.volumeOfViews.text = formatCount(post.views)
 
         binding.likes.setOnClickListener {
             post.likeByMe = !post.likeByMe
             updateLike(binding, post)
-            writeEndingLikes(binding, post)
         }
 
         binding.shares.setOnClickListener {
-            updateShare(binding,post)
-            writeEndingShares(binding, post)
+            updateShare(binding, post)
         }
 
         binding.views.setOnClickListener {
             updateViews(binding, post)
-            writeEndingViews(binding, post)
         }
     }
 
@@ -66,52 +60,40 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.baseline_favorite_24
             }
         )
-        if(post.likeByMe) post.likes-- else post.likes++
-            binding.volumeOfLikes.text = post.likes.toString()
-        }
+        if (post.likeByMe) post.likes-- else post.likes++
+        binding.volumeOfLikes.text = formatCount(post.likes)
+    }
 
 
     private fun updateShare(binding: ActivityMainBinding, post: Post) {
         post.shares++
-        binding.volumeOfShare.text = post.shares.toString()
+        binding.volumeOfShare.text = formatCount(post.shares)
     }
 
     private fun updateViews(binding: ActivityMainBinding, post: Post) {
         post.views++
-        binding.volumeOfViews.text = post.views.toString()
+        binding.volumeOfViews.text = formatCount(post.views)
     }
 
-    private fun writeEndingLikes (binding: ActivityMainBinding, post: Post) {
-        if (post.likes >=1000 && post.likes < 10_000) {
-            binding.volumeOfLikes.text = (post.likes / 1000.0).toString() + "K"
-        } else if (post.likes >=10_000 && post.likes < 1_000_000) {
-         binding.volumeOfLikes.text = (post.likes / 1000).toString() + "K"
-       } else if (post.likes >=1_000_000) {
-            binding.volumeOfLikes.text = (post.likes / 1_000_000).toString() + "M"
+    private fun formatCount(count: Long): String {
+        var stringReturn: String = ""
+        var prCount: Long = 0
+        if (count < 1000) {
+            stringReturn = count.toString()
+            return stringReturn
+        } else if (count >= 1000 && count < 10_000) {
+            prCount = (count / 100)
+            stringReturn = (prCount / 10.0).toString() + "K"
+            return stringReturn
+        } else if (count >= 10_000 && count < 1_000_000) {
+            stringReturn = (count / 1000).toString() + "K"
+            return stringReturn
+        } else if (count >= 1_000_000) {
+            prCount = (count / 100_000)
+            stringReturn = (prCount / 10.0).toString() + "M"
+            return stringReturn
         }
-
-        }
-
-    private fun writeEndingShares (binding: ActivityMainBinding, post: Post) {
-        if (post.shares >=1000 && post.shares < 10000) {
-            binding.volumeOfShare.text = (post.shares/1000.0).toString() + "K"
-        } else if (post.shares >=10000 && post.shares < 1000000) {
-            binding.volumeOfShare.text = (post.shares / 1000).toString() + "K"
-        } else if (post.shares >=1000000) {
-            binding.volumeOfShare.text = (post.shares / 1000000).toString() + "M"
-        }
-
+        return stringReturn
     }
-
-    private fun writeEndingViews (binding: ActivityMainBinding, post: Post) {
-        if (post.views >=1000 && post.views <10000) {
-            binding.volumeOfViews.text = (post.views / 1000.0).toString() + "K"
-        } else if (post.views >=10000 && post.views < 1000000) {
-            binding.volumeOfViews.text = (post.views / 1000).toString() + "K"
-        } else if (post.views >=1000000) {
-            binding.volumeOfViews.text = (post.views / 1000000).toString() + "M"
-        }
-
-    }
-        }
+}
 
